@@ -1,53 +1,50 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            height: 100vh; /* Задаем высоту на весь экран */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+<!DOCTYPE html> 
+<html lang="ru"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <style> 
+        body { 
+            margin: 0; 
+            height: 100vh; /* Задаем высоту на весь экран */ 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        } 
 
-        #playButton {
-            width: 100%;
-            height: 100%;
-            font-size: 2em; /* Увеличиваем размер текста кнопки */
-            border: none; 
-            background-color: #4CAF50; /* Зеленый фон */
-            color: white; /* Белый текст */
-            cursor: pointer; /* Указатель при наведении */
-        }
+        #playButton { 
+            width: 100%; 
+            height: 100%; 
+            font-size: 2em; /* Увеличиваем размер текста кнопки */ 
+            border: none;  
+            background-color: #4CAF50; /* Зеленый фон */ 
+            color: white; /* Белый текст */ 
+            cursor: pointer; /* Указатель при наведении */ 
+        } 
 
-        #playButton:hover {
-            background-color: #45a049; /* Темный зеленый при наведении */
-        }
-    </style>
-</head>
-<body>
-    <button id="playButton"></button>
-    <audio id="audio" src="audio/source.mp3" preload="auto"></audio>
+        #playButton:hover { 
+            background-color: #45a049; /* Темный зеленый при наведении */ 
+        } 
+    </style> 
+</head> 
+<body> 
+    <button id="playButton"></button> 
+    <audio id="audio" src="audio/source.mp3" preload="auto"></audio> 
 
-    <script>
-        const playButton = document.getElementById('playButton');
-        const audio = document.getElementById('audio');
+    <script> 
+        const playButton = document.getElementById('playButton'); 
+        const audio = document.getElementById('audio'); 
 
-        playButton.addEventListener('click', () => {
-            audio.play().catch(error => {
-                console.error('Ошибка воспроизведения:', error);
-            });
+        playButton.addEventListener('mouseover', () => { 
+            audio.play().catch(error => { 
+                console.error('Ошибка воспроизведения:', error); 
+            }); 
+        }); 
+
+        playButton.addEventListener('mouseleave', () => {
+            audio.pause(); // Остановить аудио, когда курсор уходит с кнопки
+            audio.currentTime = 0; // Сбросить время трека, если нужно
         });
-
-        window.onload = function() {
-            // Ищем кнопку по ID
-            if (playButton) {
-                // Имитация клика на кнопку
-                playButton.click();
-            }
-        };
-    </script>
-</body>
+    </script> 
+</body> 
 </html>
